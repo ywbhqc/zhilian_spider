@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-智联招聘Python岗位爬虫
-"""
 
 import requests
 from bs4 import BeautifulSoup
