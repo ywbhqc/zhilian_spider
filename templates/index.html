@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python岗位数据分析</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .summary {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .summary h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .total-jobs {
+            font-size: 2em;
+            color: #667eea;
+            font-weight: bold;
+        }
+        .charts-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .chart-box {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 350px;
+            max-width: 450px;
+        }
+        .chart-title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>Python岗位数据分析报告</h1>
+        <p>基于全国31个省会城市的Python职位数据分析</p>
+    </div>
+    <div class="summary">
+        <h2>数据概览</h2>
+        <div class="total-jobs">{{ total_jobs }}</div>
+        <p>总职位数量</p>
+    </div>
+    <div class="charts-container">
+        <div class="chart-box">
+            <div class="chart-title">公司性质分布</div>
+            {{ company_chart|safe }}
+        </div>
+        <div class="chart-box">
+            <div class="chart-title">地区分布</div>
+            {{ city_chart|safe }}
+        </div>
+        <div class="chart-box">
+            <div class="chart-title">薪资分布</div>
+            {{ salary_chart|safe }}
+        </div>
+    </div>
+    <div class="footer">
+        <p>数据来源：智联招聘 | 分析工具：PySpark + Flask + pyecharts</p>
+    </div>
+</body>
+</html>
